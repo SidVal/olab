@@ -5,114 +5,142 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Generador de Perfil Laboral para IA</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    // Evita parpadeo visual: claro por defecto, dark solo si fue elegido antes.
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen transition-colors duration-300">
+<body class="min-h-screen bg-slate-50 text-slate-950 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+  <button
+    id="themeToggle"
+    type="button"
+    class="fixed top-4 right-4 z-50 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
+    aria-label="Cambiar tema"
+  >
+    🌙 Dark
+  </button>
+
   <main class="max-w-5xl mx-auto px-5 py-10">
-    <section class="mb-10">
-      <span class="inline-flex items-center rounded-full bg-blue-500/10 text-blue-300 px-4 py-1 text-sm font-medium mb-4">
+    <section class="mb-10 pr-28 sm:pr-0">
+      <span class="inline-flex items-center rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-300 px-4 py-1 text-sm font-medium mb-4">
         Orientación laboral asistida por IA (gratis)
       </span>
 
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-950 dark:text-slate-50">
         Generador de briefing laboral
       </h1>
 
-        <button id="themeToggle" class="fixed top-4 right-4 z-50 rounded-full border border-slate-700 bg-slate-900 text-slate-100 px-4 py-2 text-sm font-semibold shadow-lg"> ☀️ Light
-    </button>
-      
-      <p class="text-slate-300 text-lg max-w-3xl leading-relaxed">
+      <p class="text-slate-600 dark:text-slate-300 text-lg max-w-3xl leading-relaxed">
         Completá las respuestas y generá un prompt estructurado para pegar en ChatGPT, Claude, Gemini o cualquier agente de IA. La idea es ayudar a perfilar fortalezas, restricciones y posibles nichos laborales.<br /><br />
         Si un campo es obligatorio pero no tienes información, sé sincero, escribe algo sin inventar datos. Mentir aquí, sería como mentir en la entrevista laboral.
       </p>
 
-      <p id="error-general" class="hidden text-red-400 mb-4 mt-1.5">
+      <p id="error-general" class="hidden text-red-600 dark:text-red-400 mb-4 mt-4 font-medium">
         Por favor, revisar de aquí hacia abajo, hay algún campo (remarcado en rojo) que no está completado y todos son requeridos para generar el prompt.
       </p>
     </section>
 
     <section class="grid gap-5" id="formulario">
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="nombre" class="block text-lg font-semibold mb-2">Nombre o referencia de la persona</label>
-        <input id="nombre" required type="text" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Juan, mi amigo, candidato, etc." />
+      <div class="card">
+        <label for="nombre" class="label">Nombre o referencia de la persona</label>
+        <input id="nombre" required type="text" class="campo field" placeholder="Ej: Juan, mi amigo, candidato, etc." />
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="situacion" class="block text-lg font-semibold mb-2">Situación actual</label>
-        <textarea id="situacion" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: quedó sin trabajo hace poco, tiene mucho tiempo libre, no sabe bien hacia dónde orientar la búsqueda..."></textarea>
+      <div class="card">
+        <label for="situacion" class="label">Situación actual</label>
+        <textarea id="situacion" required rows="4" class="campo field" placeholder="Ej: quedó sin trabajo hace poco, tiene mucho tiempo libre, no sabe bien hacia dónde orientar la búsqueda..."></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="localizacion" class="block text-lg font-semibold mb-2">Ciudad y País</label>
-        <textarea id="localizacion" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Buenos Aires, Argentina"></textarea>
+      <div class="card">
+        <label for="localizacion" class="label">Ciudad y País</label>
+        <textarea id="localizacion" required rows="4" class="campo field" placeholder="Ej: Buenos Aires, Argentina"></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="experiencia" class="block text-lg font-semibold mb-2">Experiencia laboral previa</label>
-        <textarea id="experiencia" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Dónde trabajó? ¿Qué roles tuvo? ¿Qué tareas hacía?"></textarea>
+      <div class="card">
+        <label for="experiencia" class="label">Experiencia laboral previa</label>
+        <textarea id="experiencia" required rows="4" class="campo field" placeholder="¿Dónde trabajó? ¿Qué roles tuvo? ¿Qué tareas hacía?"></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="fortalezas" class="block text-lg font-semibold mb-2">Fortalezas y tareas que se le dan bien</label>
-        <textarea id="fortalezas" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué hace bien? ¿En qué suele destacarse? ¿En qué le piden ayuda?"></textarea>
+      <div class="card">
+        <label for="fortalezas" class="label">Fortalezas y tareas que se le dan bien</label>
+        <textarea id="fortalezas" required rows="4" class="campo field" placeholder="¿Qué hace bien? ¿En qué suele destacarse? ¿En qué le piden ayuda?"></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="rechazos" class="block text-lg font-semibold mb-2">Tareas o ambientes que no tolera</label>
-        <textarea id="rechazos" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué tipo de trabajo no quiere repetir? ¿Qué cosas lo frustran o desgastan?"></textarea>
+      <div class="card">
+        <label for="rechazos" class="label">Tareas o ambientes que no tolera</label>
+        <textarea id="rechazos" required rows="4" class="campo field" placeholder="¿Qué tipo de trabajo no quiere repetir? ¿Qué cosas lo frustran o desgastan?"></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="habilidades" class="block text-lg font-semibold mb-2">Habilidades técnicas o prácticas</label>
-        <textarea id="habilidades" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Herramientas, sistemas, oficios, idiomas, administración, ventas, manejo de máquinas, etc."></textarea>
+      <div class="card">
+        <label for="habilidades" class="label">Habilidades técnicas o prácticas</label>
+        <textarea id="habilidades" required rows="4" class="campo field" placeholder="Herramientas, sistemas, oficios, idiomas, administración, ventas, manejo de máquinas, etc."></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="formaTrabajo" class="block text-lg font-semibold mb-2">Forma de trabajar preferida</label>
-        <textarea id="formaTrabajo" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Prefiere rutina o variedad? ¿Solo o en equipo? ¿Ejecución, análisis, trato con gente, organización?"></textarea>
+      <div class="card">
+        <label for="formaTrabajo" class="label">Forma de trabajar preferida</label>
+        <textarea id="formaTrabajo" required rows="4" class="campo field" placeholder="¿Prefiere rutina o variedad? ¿Solo o en equipo? ¿Ejecución, análisis, trato con gente, organización?"></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="economia" class="block text-lg font-semibold mb-2">Situación económica y urgencia</label>
-        <textarea id="economia" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Necesita trabajo urgente? ¿Puede capacitarse? ¿Puede aceptar algo temporal?"></textarea>
+      <div class="card">
+        <label for="economia" class="label">Situación económica y urgencia</label>
+        <textarea id="economia" required rows="4" class="campo field" placeholder="¿Necesita trabajo urgente? ¿Puede capacitarse? ¿Puede aceptar algo temporal?"></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="intereses" class="block text-lg font-semibold mb-2">Intereses reales</label>
-        <textarea id="intereses" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué temas consume, qué le interesa, qué actividades hace sin obligación?"></textarea>
+      <div class="card">
+        <label for="intereses" class="label">Intereses reales</label>
+        <textarea id="intereses" required rows="4" class="campo field" placeholder="¿Qué temas consume, qué le interesa, qué actividades hace sin obligación?"></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="restricciones" class="block text-lg font-semibold mb-2">Restricciones reales</label>
-        <textarea id="restricciones" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Movilidad, horarios, responsabilidades familiares, salud, conectividad, ubicación, etc."></textarea>
+      <div class="card">
+        <label for="restricciones" class="label">Restricciones reales</label>
+        <textarea id="restricciones" required rows="4" class="campo field" placeholder="Movilidad, horarios, responsabilidades familiares, salud, conectividad, ubicación, etc."></textarea>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <label for="capacitacion" class="block text-lg font-semibold mb-2">Apertura a aprender o reconvertirse</label>
-        <textarea id="capacitacion" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Está dispuesto a capacitarse? ¿Cuánto tiempo? ¿En qué temas tendría paciencia para aprender?"></textarea>
+      <div class="card">
+        <label for="capacitacion" class="label">Apertura a aprender o reconvertirse</label>
+        <textarea id="capacitacion" required rows="4" class="campo field" placeholder="¿Está dispuesto a capacitarse? ¿Cuánto tiempo? ¿En qué temas tendría paciencia para aprender?"></textarea>
       </div>
     </section>
 
     <section class="mt-8 flex flex-col sm:flex-row gap-3">
-      <button id="cargarBtn" class="rounded-xl bg-blue-600 hover:bg-blue-500 transition px-6 py-3 font-semibold shadow-lg shadow-blue-950/40">
+      <button id="cargarBtn" type="button" class="rounded-xl bg-blue-600 hover:bg-blue-500 transition px-6 py-3 font-semibold text-white shadow-lg shadow-blue-950/20 dark:shadow-blue-950/40">
         Cargar prompt
       </button>
 
-      <button id="copiarBtn" class="hidden rounded-xl bg-slate-800 hover:bg-slate-700 transition px-6 py-3 font-semibold border border-slate-700">
+      <button id="copiarBtn" type="button" class="hidden rounded-xl bg-slate-200 hover:bg-slate-300 transition px-6 py-3 font-semibold border border-slate-300 text-slate-900 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-slate-100">
         Copiar prompt
       </button>
     </section>
 
-    <section id="resultadoWrapper" class="hidden mt-8 bg-slate-900 border border-slate-800 rounded-2xl p-5">
+    <section id="resultadoWrapper" class="hidden mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-colors dark:bg-slate-900 dark:border-slate-800">
       <div class="flex items-start justify-between gap-4 mb-4">
         <div>
-          <h2 class="text-2xl font-bold">Prompt generado</h2>
-          <p class="text-slate-400 mt-1">Copiá este texto y pegalo en tu agente de IA favorito.</p>
+          <h2 class="text-2xl font-bold text-slate-950 dark:text-slate-50">Prompt generado</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-1">Copiá este texto y pegalo en tu agente de IA favorito.</p>
         </div>
       </div>
 
-      <textarea id="promptFinal" readonly rows="22" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-200 outline-none resize-y"></textarea>
+      <textarea id="promptFinal" readonly rows="22" class="w-full rounded-xl bg-slate-50 border border-slate-300 px-4 py-3 text-slate-900 outline-none resize-y transition-colors dark:bg-slate-950 dark:border-slate-700 dark:text-slate-200"></textarea>
     </section>
   </main>
+
+  <style type="text/tailwindcss">
+    @layer components {
+      .card {
+        @apply rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900;
+      }
+
+      .label {
+        @apply block text-lg font-semibold mb-2 text-slate-950 dark:text-slate-100;
+      }
+
+      .field {
+        @apply w-full rounded-xl bg-slate-50 border border-slate-300 px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:bg-slate-950 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500;
+      }
+    }
+  </style>
 
   <script>
     const campos = [
@@ -136,6 +164,7 @@
     const promptFinal = document.getElementById('promptFinal');
     const requiredFields = document.querySelectorAll('.campo');
     const errorGeneral = document.getElementById('error-general');
+    const themeToggle = document.getElementById('themeToggle');
 
     function valor(id) {
       const el = document.getElementById(id);
@@ -144,23 +173,18 @@
 
     function validar() {
       let valido = true;
-    
+
       requiredFields.forEach(el => {
-        const id = el.id;
-        const error = document.getElementById('error-' + id);
-    
         if (!el.value.trim()) {
           valido = false;
-          el.classList.remove('border-slate-700');
-          el.classList.add('border-red-500');
-          if (error) error.classList.remove('hidden');
+          el.classList.remove('border-slate-300', 'dark:border-slate-700');
+          el.classList.add('border-red-500', 'dark:border-red-500');
         } else {
-          el.classList.remove('border-red-500');
-          el.classList.add('border-slate-700');
-          if (error) error.classList.add('hidden');
+          el.classList.remove('border-red-500', 'dark:border-red-500');
+          el.classList.add('border-slate-300', 'dark:border-slate-700');
         }
       });
-    
+
       return valido;
     }
 
@@ -214,25 +238,40 @@ Para cada nicho, explicar:
 `;
     }
 
+    function aplicarTema(modo) {
+      const esDark = modo === 'dark';
+      document.documentElement.classList.toggle('dark', esDark);
+      localStorage.setItem('theme', modo);
+      themeToggle.textContent = esDark ? '☀️ Light' : '🌙 Dark';
+    }
+
+    aplicarTema(localStorage.getItem('theme') || 'light');
+
+    themeToggle.addEventListener('click', () => {
+      const esDark = document.documentElement.classList.contains('dark');
+      aplicarTema(esDark ? 'light' : 'dark');
+    });
+
     cargarBtn.addEventListener('click', () => {
       if (!validar()) {
         errorGeneral.classList.remove('hidden');
-      
+
         const y = errorGeneral.getBoundingClientRect().top + window.scrollY - 80;
-      
+
         window.scrollTo({
           top: y,
           behavior: 'smooth'
         });
-      
+
         return;
       }
-    
+
       errorGeneral.classList.add('hidden');
-    
+
       promptFinal.value = generarPrompt();
       resultadoWrapper.classList.remove('hidden');
       copiarBtn.classList.remove('hidden');
+      resultadoWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     copiarBtn.addEventListener('click', async () => {
@@ -245,33 +284,6 @@ Para cada nicho, explicar:
         document.execCommand('copy');
       }
     });
-
-const themeToggle = document.getElementById('themeToggle');
-
-function aplicarTema(modo) {
-  const esLight = modo === 'light';
-
-  document.body.classList.toggle('bg-slate-950', !esLight);
-  document.body.classList.toggle('text-slate-100', !esLight);
-
-  document.body.classList.toggle('bg-slate-100', esLight);
-  document.body.classList.toggle('text-slate-900', esLight);
-
-  themeToggle.textContent = esLight ? '🌙 Dark' : '☀️ Light';
-  themeToggle.className = esLight
-    ? 'fixed top-4 right-4 z-50 rounded-full border border-slate-300 bg-white text-slate-900 px-4 py-2 text-sm font-semibold shadow-lg'
-    : 'fixed top-4 right-4 z-50 rounded-full border border-slate-700 bg-slate-900 text-slate-100 px-4 py-2 text-sm font-semibold shadow-lg';
-
-  localStorage.setItem('theme', modo);
-}
-
-const temaGuardado = localStorage.getItem('theme') || 'dark';
-aplicarTema(temaGuardado);
-
-themeToggle.addEventListener('click', () => {
-  const temaActual = localStorage.getItem('theme') || 'dark';
-  aplicarTema(temaActual === 'dark' ? 'light' : 'dark');
-});    
   </script>
 </body>
 </html>
