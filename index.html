@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Perfil Laboral para IA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+  <main class="max-w-5xl mx-auto px-5 py-10">
+    <section class="mb-10">
+      <span class="inline-flex items-center rounded-full bg-blue-500/10 text-blue-300 px-4 py-1 text-sm font-medium mb-4">
+        Orientación laboral asistida por IA
+      </span>
+
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+        Generador de briefing laboral
+      </h1>
+
+      <p class="text-slate-300 text-lg max-w-3xl leading-relaxed">
+        Completá las respuestas y generá un prompt estructurado para pegar en ChatGPT, Claude, Gemini o cualquier agente de IA. La idea es ayudar a perfilar fortalezas, restricciones y posibles nichos laborales.
+      </p>
+    </section>
+
+    <section class="grid gap-5" id="formulario">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="nombre" class="block text-lg font-semibold mb-2">Nombre o referencia de la persona</label>
+        <input id="nombre" type="text" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Juan, mi amigo, candidato, etc." />
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="situacion" class="block text-lg font-semibold mb-2">Situación actual</label>
+        <textarea id="situacion" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: quedó sin trabajo hace poco, tiene mucho tiempo libre, no sabe bien hacia dónde orientar la búsqueda..."></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="experiencia" class="block text-lg font-semibold mb-2">Experiencia laboral previa</label>
+        <textarea id="experiencia" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Dónde trabajó? ¿Qué roles tuvo? ¿Qué tareas hacía?"></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="fortalezas" class="block text-lg font-semibold mb-2">Fortalezas y tareas que se le dan bien</label>
+        <textarea id="fortalezas" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué hace bien? ¿En qué suele destacarse? ¿En qué le piden ayuda?"></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="rechazos" class="block text-lg font-semibold mb-2">Tareas o ambientes que no tolera</label>
+        <textarea id="rechazos" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué tipo de trabajo no quiere repetir? ¿Qué cosas lo frustran o desgastan?"></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="habilidades" class="block text-lg font-semibold mb-2">Habilidades técnicas o prácticas</label>
+        <textarea id="habilidades" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Herramientas, sistemas, oficios, idiomas, administración, ventas, manejo de máquinas, etc."></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="formaTrabajo" class="block text-lg font-semibold mb-2">Forma de trabajar preferida</label>
+        <textarea id="formaTrabajo" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Prefiere rutina o variedad? ¿Solo o en equipo? ¿Ejecución, análisis, trato con gente, organización?"></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="economia" class="block text-lg font-semibold mb-2">Situación económica y urgencia</label>
+        <textarea id="economia" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Necesita trabajo urgente? ¿Puede capacitarse? ¿Puede aceptar algo temporal?"></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="intereses" class="block text-lg font-semibold mb-2">Intereses reales</label>
+        <textarea id="intereses" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué temas consume, qué le interesa, qué actividades hace sin obligación?"></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="restricciones" class="block text-lg font-semibold mb-2">Restricciones reales</label>
+        <textarea id="restricciones" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Movilidad, horarios, responsabilidades familiares, salud, conectividad, ubicación, etc."></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="capacitacion" class="block text-lg font-semibold mb-2">Apertura a aprender o reconvertirse</label>
+        <textarea id="capacitacion" rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Está dispuesto a capacitarse? ¿Cuánto tiempo? ¿En qué temas tendría paciencia para aprender?"></textarea>
+      </div>
+    </section>
+
+    <section class="mt-8 flex flex-col sm:flex-row gap-3">
+      <button id="cargarBtn" class="rounded-xl bg-blue-600 hover:bg-blue-500 transition px-6 py-3 font-semibold shadow-lg shadow-blue-950/40">
+        Cargar prompt
+      </button>
+
+      <button id="copiarBtn" class="hidden rounded-xl bg-slate-800 hover:bg-slate-700 transition px-6 py-3 font-semibold border border-slate-700">
+        Copiar prompt
+      </button>
+    </section>
+
+    <section id="resultadoWrapper" class="hidden mt-8 bg-slate-900 border border-slate-800 rounded-2xl p-5">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <h2 class="text-2xl font-bold">Prompt generado</h2>
+          <p class="text-slate-400 mt-1">Copiá este texto y pegalo en tu agente de IA favorito.</p>
+        </div>
+      </div>
+
+      <textarea id="promptFinal" readonly rows="22" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-200 outline-none resize-y"></textarea>
+    </section>
+  </main>
+
+  <script>
+    const campos = [
+      ['nombre', 'Nombre o referencia'],
+      ['situacion', 'Situación actual'],
+      ['experiencia', 'Experiencia laboral previa'],
+      ['fortalezas', 'Fortalezas y tareas que se le dan bien'],
+      ['rechazos', 'Tareas o ambientes que no tolera'],
+      ['habilidades', 'Habilidades técnicas o prácticas'],
+      ['formaTrabajo', 'Forma de trabajar preferida'],
+      ['economia', 'Situación económica y urgencia'],
+      ['intereses', 'Intereses reales'],
+      ['restricciones', 'Restricciones reales'],
+      ['capacitacion', 'Apertura a aprender o reconvertirse']
+    ];
+
+    const cargarBtn = document.getElementById('cargarBtn');
+    const copiarBtn = document.getElementById('copiarBtn');
+    const resultadoWrapper = document.getElementById('resultadoWrapper');
+    const promptFinal = document.getElementById('promptFinal');
+
+    function valor(id) {
+      const el = document.getElementById(id);
+      return el.value.trim() || '[Sin responder]';
+    }
+
+    function generarPrompt() {
+      const respuestas = campos
+        .map(([id, titulo]) => `## ${titulo}\n${valor(id)}`)
+        .join('\n\n');
+
+      return `Actuá como orientador laboral experto en reconversión profesional, búsqueda de empleo y detección de perfiles laborales realistas.
+
+Tengo una persona que quedó sin trabajo y necesito ayudarla a encontrar nichos laborales donde tenga más probabilidades de conseguir empleo.
+
+Analizá las respuestas con criterio práctico, sin romantizar intereses personales y priorizando oportunidades laborales reales.
+
+Tus objetivos:
+1. Detectar el perfil laboral probable de la persona.
+2. Identificar fortalezas concretas.
+3. Detectar restricciones y riesgos.
+4. Recomendar nichos laborales realistas.
+5. Sugerir tipos de puestos concretos para buscar.
+6. Proponer qué debería mejorar o aprender.
+7. Armar un plan de acción de 14 días.
+8. Generar un prompt adicional para mejorar su CV.
+
+Respuestas recopiladas:
+
+${respuestas}
+
+Formato de respuesta esperado:
+
+# Diagnóstico laboral
+
+## Perfil probable
+
+## Fortalezas principales
+
+## Restricciones y alertas
+
+## 3 a 5 nichos laborales recomendados
+Para cada nicho, explicar:
+- Por qué encaja
+- Qué puestos buscar
+- Qué palabras clave usar en portales de empleo
+- Qué tendría que mejorar
+
+## Trabajos concretos para buscar esta semana
+
+## Plan de acción de 14 días
+
+## Prompt para mejorar su CV
+`;
+    }
+
+    cargarBtn.addEventListener('click', () => {
+      promptFinal.value = generarPrompt();
+      resultadoWrapper.classList.remove('hidden');
+      copiarBtn.classList.remove('hidden');
+      resultadoWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    copiarBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(promptFinal.value);
+        copiarBtn.textContent = 'Copiado';
+        setTimeout(() => copiarBtn.textContent = 'Copiar prompt', 1500);
+      } catch (error) {
+        promptFinal.select();
+        document.execCommand('copy');
+      }
+    });
+  </script>
+</body>
+</html>
