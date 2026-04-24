@@ -21,62 +21,66 @@
         Completá las respuestas y generá un prompt estructurado para pegar en ChatGPT, Claude, Gemini o cualquier agente de IA. La idea es ayudar a perfilar fortalezas, restricciones y posibles nichos laborales.<br />
         Si un campo es obligatorio pero no tienes información, sé sincero, escribe algo sin inventar datos. Mentir aquí, sería como mentir en la entrevista laboral.
       </p>
+
+      <p id="error-general" class="hidden text-red-400 mb-4">
+        Completá todos los campos antes de generar el prompt.
+      </p>
     </section>
 
     <section class="grid gap-5" id="formulario">
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="nombre" class="block text-lg font-semibold mb-2">Nombre o referencia de la persona</label>
-        <input id="nombre" required type="text" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Juan, mi amigo, candidato, etc." />
+        <input id="nombre" required type="text" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Juan, mi amigo, candidato, etc." />
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="situacion" class="block text-lg font-semibold mb-2">Situación actual</label>
-        <textarea id="situacion" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: quedó sin trabajo hace poco, tiene mucho tiempo libre, no sabe bien hacia dónde orientar la búsqueda..."></textarea>
+        <textarea id="situacion" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: quedó sin trabajo hace poco, tiene mucho tiempo libre, no sabe bien hacia dónde orientar la búsqueda..."></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="experiencia" class="block text-lg font-semibold mb-2">Experiencia laboral previa</label>
-        <textarea id="experiencia" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Dónde trabajó? ¿Qué roles tuvo? ¿Qué tareas hacía?"></textarea>
+        <textarea id="experiencia" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Dónde trabajó? ¿Qué roles tuvo? ¿Qué tareas hacía?"></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="fortalezas" class="block text-lg font-semibold mb-2">Fortalezas y tareas que se le dan bien</label>
-        <textarea id="fortalezas" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué hace bien? ¿En qué suele destacarse? ¿En qué le piden ayuda?"></textarea>
+        <textarea id="fortalezas" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué hace bien? ¿En qué suele destacarse? ¿En qué le piden ayuda?"></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="rechazos" class="block text-lg font-semibold mb-2">Tareas o ambientes que no tolera</label>
-        <textarea id="rechazos" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué tipo de trabajo no quiere repetir? ¿Qué cosas lo frustran o desgastan?"></textarea>
+        <textarea id="rechazos" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué tipo de trabajo no quiere repetir? ¿Qué cosas lo frustran o desgastan?"></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="habilidades" class="block text-lg font-semibold mb-2">Habilidades técnicas o prácticas</label>
-        <textarea id="habilidades" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Herramientas, sistemas, oficios, idiomas, administración, ventas, manejo de máquinas, etc."></textarea>
+        <textarea id="habilidades" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Herramientas, sistemas, oficios, idiomas, administración, ventas, manejo de máquinas, etc."></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="formaTrabajo" class="block text-lg font-semibold mb-2">Forma de trabajar preferida</label>
-        <textarea id="formaTrabajo" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Prefiere rutina o variedad? ¿Solo o en equipo? ¿Ejecución, análisis, trato con gente, organización?"></textarea>
+        <textarea id="formaTrabajo" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Prefiere rutina o variedad? ¿Solo o en equipo? ¿Ejecución, análisis, trato con gente, organización?"></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="economia" class="block text-lg font-semibold mb-2">Situación económica y urgencia</label>
-        <textarea id="economia" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Necesita trabajo urgente? ¿Puede capacitarse? ¿Puede aceptar algo temporal?"></textarea>
+        <textarea id="economia" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Necesita trabajo urgente? ¿Puede capacitarse? ¿Puede aceptar algo temporal?"></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="intereses" class="block text-lg font-semibold mb-2">Intereses reales</label>
-        <textarea id="intereses" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué temas consume, qué le interesa, qué actividades hace sin obligación?"></textarea>
+        <textarea id="intereses" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Qué temas consume, qué le interesa, qué actividades hace sin obligación?"></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="restricciones" class="block text-lg font-semibold mb-2">Restricciones reales</label>
-        <textarea id="restricciones" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Movilidad, horarios, responsabilidades familiares, salud, conectividad, ubicación, etc."></textarea>
+        <textarea id="restricciones" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Movilidad, horarios, responsabilidades familiares, salud, conectividad, ubicación, etc."></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="capacitacion" class="block text-lg font-semibold mb-2">Apertura a aprender o reconvertirse</label>
-        <textarea id="capacitacion" required rows="4" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Está dispuesto a capacitarse? ¿Cuánto tiempo? ¿En qué temas tendría paciencia para aprender?"></textarea>
+        <textarea id="capacitacion" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="¿Está dispuesto a capacitarse? ¿Cuánto tiempo? ¿En qué temas tendría paciencia para aprender?"></textarea>
       </div>
     </section>
 
@@ -121,11 +125,40 @@
     const copiarBtn = document.getElementById('copiarBtn');
     const resultadoWrapper = document.getElementById('resultadoWrapper');
     const promptFinal = document.getElementById('promptFinal');
+    const requiredFields = document.querySelectorAll('.campo');
+    const errorGeneral = document.getElementById('error-general');
 
     function valor(id) {
       const el = document.getElementById(id);
       return el.value.trim() || '[Sin responder]';
     }
+
+    function validar() {
+      let valido = true;
+    
+      requiredFields.forEach(el => {
+        const id = el.id;
+        const error = document.getElementById('error-' + id);
+    
+        if (!el.value.trim()) {
+          valido = false;
+          el.classList.add('border-red-500');
+          if (error) error.classList.remove('hidden');
+        } else {
+          el.classList.remove('border-red-500');
+          if (error) error.classList.add('hidden');
+        }
+      });
+    
+      return valido;
+    }
+
+    if (!validar()) {
+        errorGeneral.classList.remove('hidden');
+        return;
+      } else {
+        errorGeneral.classList.add('hidden');
+      }
 
     function generarPrompt() {
       const respuestas = campos
