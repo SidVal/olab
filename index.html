@@ -10,7 +10,7 @@
   <main class="max-w-5xl mx-auto px-5 py-10">
     <section class="mb-10">
       <span class="inline-flex items-center rounded-full bg-blue-500/10 text-blue-300 px-4 py-1 text-sm font-medium mb-4">
-        Orientación laboral asistida por IA
+        Orientación laboral asistida por IA (gratis)
       </span>
 
       <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
@@ -18,11 +18,11 @@
       </h1>
 
       <p class="text-slate-300 text-lg max-w-3xl leading-relaxed">
-        Completá las respuestas y generá un prompt estructurado para pegar en ChatGPT, Claude, Gemini o cualquier agente de IA. La idea es ayudar a perfilar fortalezas, restricciones y posibles nichos laborales.<br />
+        Completá las respuestas y generá un prompt estructurado para pegar en ChatGPT, Claude, Gemini o cualquier agente de IA. La idea es ayudar a perfilar fortalezas, restricciones y posibles nichos laborales.<br /><br />
         Si un campo es obligatorio pero no tienes información, sé sincero, escribe algo sin inventar datos. Mentir aquí, sería como mentir en la entrevista laboral.
       </p>
 
-      <p id="error-general" class="hidden text-red-400 mb-4">
+      <p id="error-general" class="hidden text-red-400 mb-4 mt-1.5">
         Por favor, revisar de aquí hacia abajo, hay algún campo (remarcado en rojo) que no está completado y todos son requeridos para generar el prompt.
       </p>
     </section>
@@ -36,6 +36,11 @@
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <label for="situacion" class="block text-lg font-semibold mb-2">Situación actual</label>
         <textarea id="situacion" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: quedó sin trabajo hace poco, tiene mucho tiempo libre, no sabe bien hacia dónde orientar la búsqueda..."></textarea>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <label for="localizacion" class="block text-lg font-semibold mb-2">Ciudad y País</label>
+        <textarea id="localizacion" required rows="4" class="campo w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-slate-100 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Buenos Aires, Argentina"></textarea>
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
@@ -119,6 +124,7 @@
       ['intereses', 'Intereses reales'],
       ['restricciones', 'Restricciones reales'],
       ['capacitacion', 'Apertura a aprender o reconvertirse']
+      ['localizacion', 'Ciudad y País']
     ];
 
     const cargarBtn = document.getElementById('cargarBtn');
@@ -169,7 +175,7 @@ Tus objetivos:
 2. Identificar fortalezas concretas.
 3. Detectar restricciones y riesgos.
 4. Recomendar nichos laborales realistas.
-5. Sugerir tipos de puestos concretos para buscar.
+5. Sugerir tipos de puestos concretos para buscar en la localización o bien de forma remota.
 6. Proponer qué debería mejorar o aprender.
 7. Armar un plan de acción de 14 días.
 8. Generar un prompt adicional para mejorar su CV.
