@@ -6,7 +6,7 @@
   <title>Generador de Perfil Laboral para IA</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
+<body class="bg-slate-950 text-slate-100 min-h-screen transition-colors duration-300">
   <main class="max-w-5xl mx-auto px-5 py-10">
     <section class="mb-10">
       <span class="inline-flex items-center rounded-full bg-blue-500/10 text-blue-300 px-4 py-1 text-sm font-medium mb-4">
@@ -17,6 +17,9 @@
         Generador de briefing laboral
       </h1>
 
+        <button id="themeToggle" class="fixed top-4 right-4 z-50 rounded-full border border-slate-700 bg-slate-900 text-slate-100 px-4 py-2 text-sm font-semibold shadow-lg"> ☀️ Light
+    </button>
+      
       <p class="text-slate-300 text-lg max-w-3xl leading-relaxed">
         Completá las respuestas y generá un prompt estructurado para pegar en ChatGPT, Claude, Gemini o cualquier agente de IA. La idea es ayudar a perfilar fortalezas, restricciones y posibles nichos laborales.<br /><br />
         Si un campo es obligatorio pero no tienes información, sé sincero, escribe algo sin inventar datos. Mentir aquí, sería como mentir en la entrevista laboral.
@@ -242,6 +245,33 @@ Para cada nicho, explicar:
         document.execCommand('copy');
       }
     });
+
+const themeToggle = document.getElementById('themeToggle');
+
+function aplicarTema(modo) {
+  const esLight = modo === 'light';
+
+  document.body.classList.toggle('bg-slate-950', !esLight);
+  document.body.classList.toggle('text-slate-100', !esLight);
+
+  document.body.classList.toggle('bg-slate-100', esLight);
+  document.body.classList.toggle('text-slate-900', esLight);
+
+  themeToggle.textContent = esLight ? '🌙 Dark' : '☀️ Light';
+  themeToggle.className = esLight
+    ? 'fixed top-4 right-4 z-50 rounded-full border border-slate-300 bg-white text-slate-900 px-4 py-2 text-sm font-semibold shadow-lg'
+    : 'fixed top-4 right-4 z-50 rounded-full border border-slate-700 bg-slate-900 text-slate-100 px-4 py-2 text-sm font-semibold shadow-lg';
+
+  localStorage.setItem('theme', modo);
+}
+
+const temaGuardado = localStorage.getItem('theme') || 'dark';
+aplicarTema(temaGuardado);
+
+themeToggle.addEventListener('click', () => {
+  const temaActual = localStorage.getItem('theme') || 'dark';
+  aplicarTema(temaActual === 'dark' ? 'light' : 'dark');
+});    
   </script>
 </body>
 </html>
