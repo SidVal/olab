@@ -23,7 +23,7 @@
       </p>
 
       <p id="error-general" class="hidden text-red-400 mb-4">
-        Completá todos los campos antes de generar el prompt.
+        Por favor, revisar de aquí hacia abajo, hay algún campo (remarcado en rojo) que no está completado y todos son requeridos para generar el prompt.
       </p>
     </section>
 
@@ -206,6 +206,14 @@ Para cada nicho, explicar:
     cargarBtn.addEventListener('click', () => {
       if (!validar()) {
         errorGeneral.classList.remove('hidden');
+      
+        const y = errorGeneral.getBoundingClientRect().top + window.scrollY - 80;
+      
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth'
+        });
+      
         return;
       }
     
@@ -214,7 +222,6 @@ Para cada nicho, explicar:
       promptFinal.value = generarPrompt();
       resultadoWrapper.classList.remove('hidden');
       copiarBtn.classList.remove('hidden');
-      resultadoWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     copiarBtn.addEventListener('click', async () => {
