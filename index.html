@@ -148,10 +148,12 @@
     
         if (!el.value.trim()) {
           valido = false;
+          el.classList.remove('border-slate-700');
           el.classList.add('border-red-500');
           if (error) error.classList.remove('hidden');
         } else {
           el.classList.remove('border-red-500');
+          el.classList.add('border-slate-700');
           if (error) error.classList.add('hidden');
         }
       });
