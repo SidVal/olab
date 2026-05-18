@@ -56,23 +56,30 @@
         Por favor, revisar de aquí hacia abajo, hay algún campo (remarcado en rojo) que no está completado y todos son requeridos para generar el prompt.
       </p>
 
-      <div class="my-8">
-        <a
-          href="https://trk.udemy.com/enAyAX"
-          target="_blank"
-          title="Aprende a encontrar trabajo ahora"
-          rel="noopener noreferrer sponsored"
-          class="group block rounded-2xl border border-gray-200 bg-white px-6 py-5 text-center shadow-sm transition hover:shadow-md hover:border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-gray-600"
-        >
-          <p class="text-lg font-semibold text-gray-900 transition group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400 sm:text-xl">
-            Aprende a encontrar trabajo ahora
-          </p>
-      
-          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            Recursos y cursos prácticos para mejorar tu búsqueda laboral
-          </p>
-        </a>
-      </div>
+<div class="my-8">
+    <a
+    id="bloquePromo"
+    href="https://trk.udemy.com/enAyAX"
+    target="_blank"
+    title="Aprende a encontrar trabajo ahora"
+    rel="noopener noreferrer sponsored"
+    class="group block rounded-2xl border border-gray-200 bg-white px-6 py-5 text-center shadow-sm transition hover:shadow-md hover:border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-gray-600"
+    >
+  <p
+  id="bloquePromoTitulo"
+  class="text-lg font-semibold text-gray-900 transition group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400 sm:text-xl"
+  >
+  Aprende a encontrar trabajo ahora
+  </p>
+  
+  <p
+  id="bloquePromoSubtitulo"
+  class="mt-2 text-sm text-gray-500 dark:text-gray-400"
+  >
+  Recursos y cursos prácticos para mejorar tu búsqueda laboral
+  </p>
+  </a>
+</div>
     </section>
 
     <section class="grid gap-5" id="formulario">
@@ -200,6 +207,40 @@
     const requiredFields = document.querySelectorAll('.campo');
     const errorGeneral = document.getElementById('error-general');
     const themeToggle = document.getElementById('themeToggle');
+
+    const promos = [
+  {
+    id: 'b1',
+    titulo: 'Aprender a encontrar trabajo ahora',
+    subtitulo: 'Cursos prácticos para mejorar tu búsqueda laboral',
+    href: 'https://trk.udemy.com/enAyAX?utm_source=olab&utm_medium=promo&utm_campaign=b1',
+    title: 'Aprender a encontrar trabajo ahora'
+  },
+  {
+    id: 'b2',
+    titulo: 'Crear tu nuevo Curriculum en 5 minutos',
+    subtitulo: 'Usa plantillas de CV creadas por profesionales que siguen las «reglas exactas» que los empleadores buscan.',
+    href: 'https://resumeio.sjv.io/c/6564328/1982948/17609?utm_source=olab&utm_medium=promo&utm_campaign=b2',
+    title: 'Crear tu nuevo Curriculum en 5 minutos'
+  }
+];
+
+function cargarPromoAleatoria() {
+  const promo = promos[Math.floor(Math.random() * promos.length)];
+
+  const bloquePromo = document.getElementById('bloquePromo');
+  const bloquePromoTitulo = document.getElementById('bloquePromoTitulo');
+  const bloquePromoSubtitulo = document.getElementById('bloquePromoSubtitulo');
+
+  if (!bloquePromo || !bloquePromoTitulo || !bloquePromoSubtitulo) return;
+
+  bloquePromo.href = promo.href;
+  bloquePromo.title = promo.title;
+  bloquePromoTitulo.textContent = promo.titulo;
+  bloquePromoSubtitulo.textContent = promo.subtitulo;
+}
+
+cargarPromoAleatoria();
 
     function valor(id) {
       const el = document.getElementById(id);
